@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('bansosdonaturs', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('bansos_id')->index()->constrained();
+            $table->foreignId('akunbank_id')->index()->constrained();
+            $table->string('nama')->nullable();
+            $table->string('email')->unique();
+            $table->string('telepon')->nullable();
+            $table->text('komentar')->nullable();
+            $table->string('nominal_donasi');
+            $table->text('image')->nullable();
+            $table->boolean('status')->default(true);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('bansosdonaturs');
+    }
+};
