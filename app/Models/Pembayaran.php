@@ -33,7 +33,7 @@ class Pembayaran extends Model
 
     public function akunbank()
     {
-        return $this->belongsTo(AkunBank::class);
+        return $this->belongsTo(Akunbank::class);
     }
 
     public static function boot()
